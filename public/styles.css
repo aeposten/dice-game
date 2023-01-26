@@ -54,13 +54,15 @@ font-family: 'Roboto', sans-serif;
   .App
   {
     width: 90vw;
-    max-width: 600px;
-    height: 90vh;
+    max-width: 400px;
+    height: 50vh;
+    max-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: var(--maingreen);
+    filter: var(--shadow);
     border-radius: 2em;
   }
 
@@ -94,6 +96,8 @@ font-family: 'Roboto', sans-serif;
   button {
     margin: 1em;
     font-size: 1rem;
+    font-weight: bold;
+    color: var(--maingreen);
     padding: 0.5em 0.75em;
     border-radius: 0.5em;
     border: var(--border);
