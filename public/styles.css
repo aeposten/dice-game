@@ -1,3 +1,10 @@
+/* 
+font-family: 'Abril Fatface', cursive;
+font-family: 'Roboto', sans-serif;
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:wght@400;700&display=swap');
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -8,8 +15,15 @@
   }
 
   body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    background-color: var(--white);
+    font-family: 'Roboto', sans-serif;
+    color: var(--gold);
   }
 
   img, picture, video, canvas, svg {
@@ -24,7 +38,29 @@
   p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
   }
-  
+
   #root, #__next {
     isolation: isolate;
+  }
+
+  :root {
+    --maingreen: #29572e;
+    ---white: #f3ede6;
+    --gold: #eeca31;
+  }
+
+  .App
+  {
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--maingreen);
+    border-radius: 2em;
+  }
+
+  h1 {
+    font-family: 'Abril Fatface', cursive;
   }
