@@ -90,7 +90,8 @@ font-family: 'Roboto', sans-serif;
     font-size: 2rem;
     font-weight: bold;
     filter: var(--shadow);
-    color: var(--maingreen)
+    color: var(--maingreen);
+    cursor: pointer;
   }
 
   .held {
@@ -109,4 +110,9 @@ font-family: 'Roboto', sans-serif;
     border-radius: 0.5em;
     border: var(--border);
     filter: var(--shadow);
+    cursor: pointer;
+  }
+
+  button:hover, button:focus {
+    text-decoration: var(--gold) double underline overline;
   }

@@ -1,15 +1,22 @@
 import { useState, useEffect } from "react";
 import Die from "./components/Die";
+import Confetti from "react-confetti";
 
 function App() {
-  const [dice, setDice] = useState(getDiceObjects);
+  const [dice, setDice] = useState(getDiceObjects());
   const [winner, setWinner] = useState(false);
 
-  useEffect(() => isWinner, [dice]);
+  useEffect(() => {
+    isWinner();
+  }, [dice]);
+
   function isWinner() {
     const forSet = dice.map((die) => (die.isHeld ? die.roll : die));
     const winningSet = new Set(forSet);
-    (winningSet.size) === 1 ? console.log("you win") : console.log("not yet")
+    if (winningSet.size === 1) {
+      setWinner(true);
+      console.log("winner");
+    }
   }
 
   function rollD6() {
@@ -17,17 +24,22 @@ function App() {
   }
 
   function handleClick() {
-    setDice((prevDiceObjects) =>
-      prevDiceObjects.map((dieObject, index) => {
-        return dieObject.isHeld
-          ? dieObject
-          : {
-              roll: rollD6(),
-              isHeld: false,
-              id: index,
-            };
-      })
-    );
+    if (winner) {
+      setDice(getDiceObjects());
+      setWinner(false);
+    } else {
+      setDice((prevDiceObjects) =>
+        prevDiceObjects.map((dieObject, index) => {
+          return dieObject.isHeld
+            ? dieObject
+            : {
+                roll: rollD6(),
+                isHeld: false,
+                id: index,
+              };
+        })
+      );
+    }
   }
 
   function getDiceObjects() {
@@ -60,11 +72,16 @@ function App() {
   }
 
   return (
-    <main className="App">
-      <h1>Tenzies</h1>
-      <section className="dice">{setDiceHtml()}</section>
-      <button onClick={handleClick}>Roll Dice</button>
-    </main>
+    <>
+      {winner && <Confetti />}
+      <main className="App">
+        <h1>Tenzies</h1>
+        <section className="dice">{setDiceHtml()}</section>
+        <button onClick={handleClick}>
+          {winner ? "New Game" : "Roll Dice"}
+        </button>
+      </main>
+    </>
   );
 }
 
