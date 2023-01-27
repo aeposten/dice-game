@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Die from "./components/Die";
 
 function App() {
   const [dice, setDice] = useState(getDiceObjects);
+  const [winner, setWinner] = useState(false);
+
+  useEffect(() => isWinner, [dice]);
+  function isWinner() {
+    const forSet = dice.map((die) => (die.isHeld ? die.roll : die));
+    const winningSet = new Set(forSet);
+    (winningSet.size) === 1 ? console.log("you win") : console.log("not yet")
+  }
+
   function rollD6() {
     return Math.floor(Math.random() * 6 + 1);
   }
