@@ -6,9 +6,7 @@ function App() {
   const [dice, setDice] = useState(getDiceObjects());
   const [winner, setWinner] = useState(false);
 
-  useEffect(() => {
-    isWinner();
-  }, [dice, isWinner]);
+  useEffect(isWinner, [dice]);
 
   function isWinner() {
     const forSet = dice.map((die) => (die.isHeld ? die.roll : die));
