@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     isWinner();
-  }, [dice]);
+  }, [dice, isWinner]);
 
   function isWinner() {
     const forSet = dice.map((die) => (die.isHeld ? die.roll : die));
