@@ -1,7 +1,7 @@
-function Die({value}) {
+function Die({value, held, id, setHeld}) {
     return (
-        <div className="die">
-           <h2>{value()}</h2> 
+        <div className={`die ${held ? "held" : ""}`} onClick={setHeld}>
+           <h2>{value}</h2> 
         </div>
     )
 }
